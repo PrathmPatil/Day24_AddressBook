@@ -97,8 +97,25 @@ public class Main {
 	         }
 	         
 	     }
+	    public void uc4_deleteContact() {
+	    	int index=-1;
+	    	for(int i=0;i<contacts.size();i++)
+	    	{
+	    		if(contacts.get(i).getF_name().equalsIgnoreCase(findByName))
+	    		{
+	    			index=i;
+	    			break;
+	    		}
+	    	}
+	    	if(index>=0) {
+	            contacts.remove(index);
+	            System.out.println("Deleted successfully"+contacts.size()+" Contacts in Book");
+	        }
+	        else
+	            System.out.println("Oops! can't find the name");
+	    }
 	    public void menu() {
-	        System.out.println("Menu: (Enter the respective number)\n1. Add contact 2. Edit contact 3. Display");
+	        System.out.println("Menu: (Enter the respective number)\n1. Add contact 2. Edit contact 3.Delete 4.Display ");
 	        option = sc.nextInt();
 	        switch(option) {
 	            case 1:
@@ -107,17 +124,26 @@ public class Main {
 	                addressBook.menu();
 	                break;
 	            case 2:
-	                System.out.println("Enter the first name to search and edit contact with first name");
+	                System.out.println("Enter the first name ");
 	               findByName = sc.next();
 	                addressBook.uc3_editContacts();
 	                addressBook.menu();
 	                break;
 	            case 3:
-	            for(int i=0;i<contacts.size();i++) {
+	                System.out.println("Enter the first name ");
+	                findByName = sc.next();
+	                addressBook.uc4_deleteContact();
+	                addressBook.menu();
+	                break;
+	            case 4:
+	            	for(int i=0;i<contacts.size();i++) {
 	            	System.out.println(contacts.get(i));
 	            }
 	            addressBook.menu();
 	                break;
+	               
+	            case 5:
+	                System.exit(0);
 	            default:
 	                System.out.println("Invalid option");
 	                addressBook.menu();
