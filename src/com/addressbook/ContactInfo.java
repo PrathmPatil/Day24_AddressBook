@@ -93,6 +93,11 @@ public class ContactInfo {
 	                +"\nState: "+state+"\nZip: "+zip
 	                +"\nPhone number: "+ph_no+"\nEmail address: "+email;
 	    }
+
+		public static void add(ContactInfo contact) {
+			// TODO Auto-generated method stub
+			
+		}
 	}
 
 

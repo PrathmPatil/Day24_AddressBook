@@ -4,6 +4,10 @@ import java.util.Scanner;
 
 public class Main {
 	
+	static Main addressBook=new Main();
+	Scanner sc=new Scanner(System.in);
+	String findByName;
+	static int option;
 	    static ContactInfo contact;
 	    static ArrayList <ContactInfo> contacts = new ArrayList<ContactInfo>(); //using Arraylist as it is easier than using Array
 
@@ -35,12 +39,94 @@ public class Main {
 	    	contacts.add(contact);//in arraylist store the contact 
 	    }
 
+	    public void uc3_editContacts() {
+	    	int index=-1;
+	    	for(int i=0;i<contacts.size();i++)
+	    	{
+	    		if(contacts.get(i).getF_name().equalsIgnoreCase(findByName))
+	    		{
+	    			index=i;
+	    			break;
+	    		}
+	    	}
+	    	if(index==-1)
+	    	{
+	    		System.out.println("Oops! Your name are not in book");
+	    	}
+	    	if(index>=0) {
+	    		   		
+	             System.out.println("Enter respectively\n1.First name 2.Last name 3.Address" +
+	                     " 4.City 5.State 6.Zip 7.Phone number 8.Email address");
+	             int option2 = sc.nextInt();
+	             switch (option2) {
+	                 case 1:
+	                     System.out.println("Enter the first name ");
+	                     contacts.get(index).setF_name(sc.next());
+	                     break;
+	                 case 2:
+	                     System.out.println("Enter the last name");
+	                     contacts.get(index).setL_name(sc.next());
+	                     break;
+	                 case 3:
+	                     System.out.println("Enter the address");
+	                     contacts.get(index).setAddress(sc.next());
+	                     break;
+	                 case 4:
+	                     System.out.println("Enter the city name");
+	                     contacts.get(index).setCity(sc.next());
+	                     break;
+	                 case 5:
+	                     System.out.println("Enter the state name ");
+	                     contacts.get(index).setState(sc.next());
+	                     break;
+	                 case 6:
+	                     System.out.println("Enter the zip code");
+	                     contacts.get(index).setZip(sc.next());
+	                     break;
+	                 case 7:
+	                     System.out.println("Enter the phone number ");
+	                     contacts.get(index).setPh_no(sc.next());
+	                     break;
+	                 case 8:
+	                     System.out.println("Enter the email address");
+	                     contacts.get(index).setEmail(sc.next());
+	                     break;
+	                 default:
+	                     System.out.println("Invalid option");
+	             }
+	         }
+	         
+	     }
+	    public void menu() {
+	        System.out.println("Menu: (Enter the respective number)\n1. Add contact 2. Edit contact 3. Display");
+	        option = sc.nextInt();
+	        switch(option) {
+	            case 1:
+	                addressBook.uc1_CreatingContact();
+	                addressBook.uc2_AddingContacts();
+	                addressBook.menu();
+	                break;
+	            case 2:
+	                System.out.println("Enter the first name to search and edit contact with first name");
+	               findByName = sc.next();
+	                addressBook.uc3_editContacts();
+	                addressBook.menu();
+	                break;
+	            case 3:
+	            for(int i=0;i<contacts.size();i++) {
+	            	System.out.println(contacts.get(i));
+	            }
+	            addressBook.menu();
+	                break;
+	            default:
+	                System.out.println("Invalid option");
+	                addressBook.menu();
+	                break;
+	        }
+	    }
 	    public static void main(String[] args) {
-	        System.out.println("Welcome to day 9 address book program");
-	        Main addressBook = new Main();
-	        addressBook.uc1_CreatingContact();
-	        addressBook.uc2_AddingContacts();
-	        System.out.println(contacts.get(0));
+	    	System.out.println("Welcome In Address Book: ");
+	    	addressBook.menu();
 	    }
 	
 
