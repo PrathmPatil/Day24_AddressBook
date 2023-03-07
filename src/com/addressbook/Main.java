@@ -8,7 +8,7 @@ public class Main extends Addressbook {
 	    public static void menu() {
 	    	 Main addressBook=new Main();
 	    	 Scanner sc=new Scanner(System.in);
-	        System.out.println("Menu: (Enter the respective number)\n1. Add contact 2. Edit contact 3.Delete 4.Display 5. Search by City or State 6. Count of person in city or state 7. Dictionary of person by city and state 8. Sort by name 9. Exit ");
+	        System.out.println("Menu: (Enter the respective number)\n1. Add contact 2. Edit contact 3.Delete 4.Display 5. Search by City or State 6. Count of person in city or state 7. Dictionary of person by city and state 8. Sort  9. Exit ");
 	        option = sc.nextInt();
 	        switch(option) {
 	            case 1:
@@ -88,7 +88,22 @@ public class Main extends Addressbook {
 	                 menu();
 	                 break;
 	            case 8:
-	            	addressBook.uc11_sortByName();
+	            	System.out.println("1. Sort by name 2. Sort by city 3. Sort by state 4. Sort by zip");
+	                int option5 = sc.nextInt();
+	                if(option5 == 1)
+	                    addressBook.uc11_sortByName();
+	                else if (option5 == 2) {
+	                    addressBook.uc12_sortByCity();
+	                }
+	                else if (option5 == 3) {
+	                    addressBook.uc12_sortByState();
+	                }
+	                else if (option5 == 4) {
+	                    addressBook.uc12_sortByZip();
+	                }
+	                else
+	                    System.out.println("Invalid option");
+	                break;
 	            case 9:
 	            	System.exit(0);
 	            default:

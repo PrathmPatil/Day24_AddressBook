@@ -14,7 +14,7 @@ public class Addressbook {
 	    String findByName;
 	    static ContactInfo contact;
 	    int count = 1;
-	    static ArrayList <ContactInfo> contacts = new ArrayList<ContactInfo>(); //using Arraylist as it is easier than using Array
+	    static List<ContactInfo> contacts = new ArrayList<ContactInfo>(); //using Arraylist as it is easier than using Array
 	    static List<ContactInfo>duplicateCheckedcontacts;
 	    static List<ContactInfo>searchByCity;
 	    static List<ContactInfo>searchByState;
@@ -159,6 +159,15 @@ public class Addressbook {
 	            System.out.println(count1+" of persons in "+stateSearch);
 	    }
 	    public void uc11_sortByName() {
-	        contacts = (ArrayList<ContactInfo>) contacts.stream().sorted(Comparator.comparing(ContactInfo::getF_name)).collect(Collectors.toList());
+	        contacts = contacts.stream().sorted(Comparator.comparing(ContactInfo::getF_name)).collect(Collectors.toList());
+	    }
+	    public void uc12_sortByCity() {
+	        contacts = contacts.stream().sorted(Comparator.comparing(ContactInfo::getCity)).collect(Collectors.toList());
+	    }
+	    public void uc12_sortByState() {
+	        contacts = contacts.stream().sorted(Comparator.comparing(ContactInfo::getState)).collect(Collectors.toList());
+	    }
+	    public void uc12_sortByZip() {
+	            contacts = contacts.stream().sorted(Comparator.comparing(ContactInfo::getZip)).collect(Collectors.toList());
 	    }
 }
