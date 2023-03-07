@@ -1,6 +1,7 @@
 package com.addressbook;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
@@ -16,6 +17,9 @@ public class Addressbook {
 	    static List<ContactInfo>duplicateCheckedcontacts;
 	    static List<ContactInfo>searchByCity;
 	    static List<ContactInfo>searchByState;
+	    static HashMap<String, List<ContactInfo>> dictionaryCity=new HashMap<>(); //uc9 dictionary
+	    static HashMap<String, List<ContactInfo>> dictionaryState = new HashMap<>();
+
 	    public void uc1_CreatingContact() {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("Enter the contact details");
@@ -127,12 +131,31 @@ public class Addressbook {
 	            }
 	        }
 	    }
-	    public void uc8_searchByCity(String citySearch) {
+	    public List<ContactInfo> uc8_searchByCity(String citySearch) {
 	        searchByCity = contacts.stream().filter(x -> x.getCity().equalsIgnoreCase(citySearch)).collect(Collectors.toList());
-	        searchByCity.forEach(x -> System.out.println(x));
+	        
+			return searchByCity;
 	    }
-	    public void uc8_searchByState(String stateSearch) {
+	    public List<ContactInfo> uc8_searchByState(String stateSearch) {
 	        searchByState = contacts.stream().filter(x -> x.getState().equalsIgnoreCase(stateSearch)).collect(Collectors.toList());
-	        searchByState.forEach(x -> System.out.println(x));
+	       return searchByState;
+	    }
+	    public void uc9_dictionaryOfPersonByCity(String cityPerson) {
+	        List<ContactInfo> cityList = uc8_searchByCity(cityPerson); //calling uc8city list and storing in a list
+	        dictionaryCity.put(cityPerson, cityList); //adding city name as key and list as value
+	        dictionaryCity.get(cityPerson).forEach(x -> System.out.println(x));
+	    }
+	    public void uc9_dictionaryOfPersonByState(String statePerson) {
+	        List<ContactInfo> cityList = uc8_searchByCity(statePerson);
+	        dictionaryState.put(statePerson, cityList);
+	        dictionaryState.get(statePerson).forEach(x -> System.out.println(x));
+	    }
+	    public void uc10_CountByCity(String citySearch) {
+	        long count1 = contacts.stream().filter(x -> x.getCity().equalsIgnoreCase(citySearch)).count();
+	        System.out.println(count1+" of persons in "+citySearch);
+	    }
+	    public void uc10_countByState(String stateSearch) {
+	            long count1 = contacts.stream().filter(x -> x.getCity().equalsIgnoreCase(stateSearch)).count();
+	            System.out.println(count1+" of persons in "+stateSearch);
 	    }
 }
