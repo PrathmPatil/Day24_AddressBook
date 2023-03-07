@@ -1,9 +1,12 @@
 package com.addressbook;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 	
 	    static ContactInfo contact;
+	    static ArrayList <ContactInfo> contacts = new ArrayList<ContactInfo>(); //using Arraylist as it is easier than using Array
+
 	    public void uc1_CreatingContact() {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("Enter the contact details");
@@ -27,12 +30,17 @@ public class Main {
 	       
 	        contact = new ContactInfo(f_name,l_name,address,city,state,zip,ph_no,email);
 	    }
+	    
+	    public void uc2_AddingContacts() {
+	    	contacts.add(contact);//in arraylist store the contact 
+	    }
 
 	    public static void main(String[] args) {
 	        System.out.println("Welcome to day 9 address book program");
-	        Main addresBook = new Main();
-	        addresBook.uc1_CreatingContact();
-	        System.out.println(contact);
+	        Main addressBook = new Main();
+	        addressBook.uc1_CreatingContact();
+	        addressBook.uc2_AddingContacts();
+	        System.out.println(contacts.get(0));
 	    }
 	
 
