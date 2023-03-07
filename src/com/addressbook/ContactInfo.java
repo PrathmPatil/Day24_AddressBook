@@ -2,6 +2,7 @@ package com.addressbook;
 
 public class ContactInfo {
 
+	    private int count;
 	    private String f_name; //first name
 	    private String l_name; //last name
 	    private String address;
@@ -77,8 +78,9 @@ public class ContactInfo {
 	    public void setCity(String city) {
 	        this.city = city;
 	    }
-	    public ContactInfo(String f_name,String l_name,String address,String city,String state,String zip,String ph_no,String email) {
-	        this.f_name = f_name;
+	    public ContactInfo(int count,String f_name,String l_name,String address,String city,String state,String zip,String ph_no,String email) {
+	        this.count=count;
+	    	this.f_name = f_name;
 	        this.l_name = l_name;
 	        this.address = address;
 	        this.city = city;
@@ -88,15 +90,17 @@ public class ContactInfo {
 	        this.email = email;
 	    }
 	    public String toString() {
-	        return "\nFirst name: "+f_name+"\nLast name: "+l_name
+	        return "\nS.No: "+count+"\nFirst name: "+f_name+"\nLast name: "+l_name
 	                +"\nAddress: "+address+"\nCity: "+city
 	                +"\nState: "+state+"\nZip: "+zip
 	                +"\nPhone number: "+ph_no+"\nEmail address: "+email;
 	    }
 
-		public static void add(ContactInfo contact) {
-			// TODO Auto-generated method stub
-			
+		public int getCount() {
+			return count;
+		}
+		public void setCount(int count) {
+			this.count=count;
 		}
 	}
 

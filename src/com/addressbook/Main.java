@@ -9,6 +9,7 @@ public class Main {
 	String findByName;
 	static int option;
 	    static ContactInfo contact;
+	    int count = 1;
 	    static ArrayList <ContactInfo> contacts = new ArrayList<ContactInfo>(); //using Arraylist as it is easier than using Array
 
 	    public void uc1_CreatingContact() {
@@ -36,6 +37,7 @@ public class Main {
 	    }
 	    
 	    public void uc2_AddingContacts() {
+	    	count++;
 	    	contacts.add(contact);//in arraylist store the contact 
 	    }
 
