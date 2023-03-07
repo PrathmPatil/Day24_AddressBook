@@ -14,6 +14,8 @@ public class Addressbook {
 	    int count = 1;
 	    static ArrayList <ContactInfo> contacts = new ArrayList<ContactInfo>(); //using Arraylist as it is easier than using Array
 	    static List<ContactInfo>duplicateCheckedcontacts;
+	    static List<ContactInfo>searchByCity;
+	    static List<ContactInfo>searchByState;
 	    public void uc1_CreatingContact() {
 	        Scanner sc = new Scanner(System.in);
 	        System.out.println("Enter the contact details");
@@ -44,7 +46,8 @@ public class Addressbook {
 	            count++;
 	            contacts.add(contact);
 	        }
-	        else {//used streams to collect the duplicates alone in a separate list
+	        else {
+	        	//used streams to collect the duplicates alone in a separate list
 	            duplicateCheckedcontacts = contacts.stream().filter(x -> (x.getF_name()+x.getL_name()).equalsIgnoreCase(contact.getF_name()+contact.getL_name())).collect(Collectors.toList());
 	            //if the duplicate list has items in the contacts list sys out that there duplicate
 	            if(contacts.equals(duplicateCheckedcontacts)) {
@@ -123,5 +126,13 @@ public class Addressbook {
 	                System.out.println("Deleted successfully"+contacts.size());
 	            }
 	        }
+	    }
+	    public void uc8_searchByCity(String citySearch) {
+	        searchByCity = contacts.stream().filter(x -> x.getCity().equalsIgnoreCase(citySearch)).collect(Collectors.toList());
+	        searchByCity.forEach(x -> System.out.println(x));
+	    }
+	    public void uc8_searchByState(String stateSearch) {
+	        searchByState = contacts.stream().filter(x -> x.getState().equalsIgnoreCase(stateSearch)).collect(Collectors.toList());
+	        searchByState.forEach(x -> System.out.println(x));
 	    }
 }
