@@ -145,7 +145,7 @@ public class Main {
 	            case 5:
 	                System.exit(0);
 	            default:
-	                System.out.println("Invalid option");
+	                System.out.println("Invalid option please enter valid option");
 	                addressBook.menu();
 	                break;
 	        }
