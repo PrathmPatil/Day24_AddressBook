@@ -73,21 +73,6 @@ public class Main extends Addressbook {
 	                 menu();
 	                 break;
 	            case 7:
-	            	 System.out.println("1. dictionary of city and it's persons 2. dictionary of state and it's persons");
-	                 int option4 = sc.nextInt();
-	                 if(option4 == 1) {
-	                     System.out.println("Enter the city name");
-	                     String cityPerson = sc.next();
-	                     addressBook.uc9_dictionaryOfPersonByCity(cityPerson);
-	                 }
-	                 else if(option4 == 2) {
-	                     System.out.println("Enter the state name");
-	                     String StatePerson = sc.next();
-	                     addressBook.uc9_dictionaryOfPersonByState(StatePerson);
-	                 }
-	                 menu();
-	            	break;
-	            case 8:
 	            	System.exit(0);
 	            default:
 	                System.out.println("Invalid option please enter valid option");
